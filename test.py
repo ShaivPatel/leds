@@ -38,4 +38,4 @@ while True:
     g = int(input('G:'))
     b = int(input('B:'))
 
-    print(f'Color chosen: {r}-{g}-{b}')
+    print('Color chosen: {%d}-{%d}-{%d}'%(r,g,b))
