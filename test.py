@@ -33,7 +33,7 @@ b = 255
 
 while True:
     color = Color(r,g,b)
-    colorWipe()
+    colorWipe(color, 5)
     r = int(input('R:'))
     g = int(input('G:'))
     b = int(input('B:'))
