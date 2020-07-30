@@ -27,15 +27,33 @@ def colorWipe(strip, color, wait_ms=50):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
-r = 255
-g = 255
-b = 255
+# Main program logic follows:
+if __name__ == '__main__':
+# Process arguments
+    parser = argparse.ArgumentParser()
+        parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
+        args = parser.parse_args()
 
-while True:
-    color = Color(r,g,b)
-    colorWipe(color, 5)
-    r = int(input('R:'))
-    g = int(input('G:'))
-    b = int(input('B:'))
+        # Create NeoPixel object with appropriate configuration.
+        strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+        # Intialize the library (must be called once before other functions).
+        strip.begin()
 
-    print('Color chosen: {%d}-{%d}-{%d}'%(r,g,b))
+        print ('Press Ctrl-C to quit.')
+        if not args.clear:
+            print('Use "-c" argument to clear LEDs on exit')
+
+
+
+    r = 255
+    g = 255
+    b = 255
+
+    while True:
+        color = Color(r,g,b)
+        colorWipe(color, 5)
+        r = int(input('R:'))
+        g = int(input('G:'))
+        b = int(input('B:'))
+
+        print('Color chosen: {%d}-{%d}-{%d}'%(r,g,b))
