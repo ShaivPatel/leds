@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     while True:
         color = Color(r,g,b)
-        colorWipe(color, 5)
+        colorWipe(strip,color, 5)
         r = int(input('R:'))
         g = int(input('G:'))
         b = int(input('B:'))
