@@ -150,13 +150,13 @@ if __name__ == '__main__':
         print('Use "-c" argument to clear LEDs on exit')
 
 
-    strips = set()
+    strips = []
     try:
 
         for i in range(10):
             strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*10, i*10+30)
             strip.begin()
-            strips.add(strip)
+            strips.append(strip)
 
         while True:
             snake(strips = strips, wait_ms=5)
