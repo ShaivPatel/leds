@@ -159,7 +159,7 @@ if __name__ == '__main__':
             strips.add(strip)
 
         while True:
-            snake(strips = strip, wait_ms=5)
+            snake(strips = strips, wait_ms=5)
 
 
 
