@@ -103,11 +103,13 @@ if __name__ == '__main__':
 
     while True:
 
-        color = wheel(count)
-        colorWipe(strip,color, count,  5)
-        # r = int(input('R:'))
-        # g = int(input('G:'))
-        # b = int(input('B:'))
-        count = int(input('count:'))
+        # color = wheel(count)
+        # colorWipe(strip,color, count,  5)
+        # # r = int(input('R:'))
+        # # g = int(input('G:'))
+        # # b = int(input('B:'))
+        # count = int(input('count:'))
+        #
+        # print('Color chosen: {%d}-{%d}-{%d}'%(r,g,b))
 
-        print('Color chosen: {%d}-{%d}-{%d}'%(r,g,b))
+        rainbow(strip)
