@@ -117,7 +117,7 @@ def snake(strip= None, strips = (), length = 10, wait_ms=50):
     if strip is not None:
         strips = (strip)
 
-    for i in range(strip.numPixels() - length):
+    for i in range(strip[0].numPixels() - length):
         clear(strip)
         for j in range(length):
             pixel = i+j
