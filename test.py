@@ -89,12 +89,15 @@ def colorWipe(strip, color, wait_ms=50):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+def clear(strip):
 
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, Color(0,0,0))
 
 def snake(strip, length = 10, wait_ms=50):
 
     for i in range(strip.numPixels() - length):
-        strip.fill()
+        clear(strip)
         for j in range(length):
             pixel = i+j
             color = wheel(pixel)
