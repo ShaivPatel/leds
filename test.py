@@ -100,7 +100,7 @@ def snake(strip, length = 10, wait_ms=50):
         clear(strip)
         for j in range(length):
             pixel = i+j
-            color = wheel(pixel)
+            color = wheel(pixel%256)
             strip.setPixelColor(pixel, color)
 
 
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            snake(strip)
+            snake(strip, wait_ms=5)
 
     except KeyboardInterrupt:
         if args.clear:
