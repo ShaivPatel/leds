@@ -154,7 +154,7 @@ if __name__ == '__main__':
     try:
 
         for i in range(10):
-            strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*10, i*10+30)
+            strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*30, i*30+29)
             strip.begin()
             strips.append(strip)
 
