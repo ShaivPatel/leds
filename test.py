@@ -62,7 +62,7 @@ def rainbowCycle(strip, wait_ms=20, iterations=5):
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
             if i in whitepixels:
-                strip.setPixelColor(i,Color(255,255,255))
+                strip.setPixelColor(i,Color(50,50,50))
 
 
         strip.show()
