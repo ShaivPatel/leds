@@ -118,8 +118,8 @@ def snake(strip= None, strips = (), length = 10, wait_ms=50):
         strips = (strip)
 
     for i in range(strips[0].numPixels() - length):
-        clear(strip1)
-        clear(strip2)
+        for strip in strips:
+            clear(strip)
         for j in range(length):
             pixel = i+j
             color = wheel(pixel%256)
