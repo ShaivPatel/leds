@@ -133,31 +133,37 @@ def snake(strip= None, strips = (), length = 10, wait_ms=50):
 
 # Main program logic follows:
 if __name__ == '__main__':
-# Process arguments
+    # Process arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
     args = parser.parse_args()
 
-    # Create NeoPixel object with appropriate configuration.
-    strip1 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 0, 139)
-    strip2 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 140, 299)
-    # Intialize the library (must be called once before other functions).
-    strip1.begin()
-    strip2.begin()
+    # # Create NeoPixel object with appropriate configuration.
+    # strip1 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 0, 139)
+    # strip2 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 140, 299)
+    # # Intialize the library (must be called once before other functions).
+    # strip1.begin()
+    # strip2.begin()
 
     print ('Press Ctrl-C to quit.')
     if not args.clear:
         print('Use "-c" argument to clear LEDs on exit')
 
 
+    strips = set()
     try:
 
+        for i in range(10):
+            strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*10, i*10+30)
+            strip.begin()
+            strips.add(strip)
+
         while True:
-            snake(strips = (strip1,strip2), wait_ms=5)
+            snake(strips = strip, wait_ms=5)
 
 
 
     except KeyboardInterrupt:
-            if args.clear:
-                colorWipe(strip1, Color(0, 0, 0), 3)
-                colorWipe(strip2, Color(0, 0, 0), 3)
+        if args.clear:
+            for strip in strips:
+                colorWipe(strip, Color(0, 0, 0), 3)
