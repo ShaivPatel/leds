@@ -80,14 +80,12 @@ def theaterChaseRainbow(strip, wait_ms=50):
                 strip.setPixelColor(i+q, 0)
 
 # Define functions which animate LEDs in various ways.
-def colorWipe(strip, color, pixelCount= LED_COUNT, wait_ms=50):
+def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
 
     for i in range(strip.numPixels()):
 
         strip.setPixelColor(i, Color(0,0,0))
-        if i < pixelCount:
-            strip.setPixelColor(i, color)
         strip.show()
         time.sleep(wait_ms/1000.0)
 
@@ -115,4 +113,4 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         if args.clear:
-            colorWipe(strip, Color(0, 0, 0), 150)
+            colorWipe(strip, Color(0, 0, 0), 3)
