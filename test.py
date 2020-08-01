@@ -52,10 +52,11 @@ if __name__ == '__main__':
     r = 255
     g = 255
     b = 255
+    count = 300
 
     while True:
         color = Color(g,r,b)
-        colorWipe(strip,color, 5)
+        colorWipe(strip,color, count,  5)
         r = int(input('R:'))
         g = int(input('G:'))
         b = int(input('B:'))
