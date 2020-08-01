@@ -89,6 +89,21 @@ def colorWipe(strip, color, wait_ms=50):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+
+
+def snake(strip, length = 10, wait_ms=50):
+
+    for i in range(strip.numPixels - length):
+        strip.clear()
+        for j in range(length):
+            pixel = i+j
+            color = wheel(pixel)
+            strip.setPixelColor(pixel, color)
+
+
+        strip.show()
+        time.sleep(wait_ms/1000.0)
+
 # Main program logic follows:
 if __name__ == '__main__':
 # Process arguments
@@ -109,7 +124,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            rainbowCycle(strip,1)
+            snake()
 
     except KeyboardInterrupt:
         if args.clear:
