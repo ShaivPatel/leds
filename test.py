@@ -102,8 +102,8 @@ if __name__ == '__main__':
     count = 255
 
     while True:
-        wheel(count)
-        color = Color(g,r,b)
+
+        color = wheel(count)
         colorWipe(strip,color, count,  5)
         # r = int(input('R:'))
         # g = int(input('G:'))
