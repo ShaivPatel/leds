@@ -53,7 +53,7 @@ def rainbowCycle(strip, wait_ms=20, iterations=5):
     for j in range(256*iterations):
 
         whitepixels = []
-        while len(whitepixels) < strip.numPixels()*0.02:
+        while len(whitepixels) < 5
             pixel = randint(0,strip.numPixels())
             if pixel not in whitepixels:
                 whitepixels.append(pixel)
@@ -111,7 +111,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            rainbowCycle(strip,10)
+            rainbowCycle(strip,100)
 
     except KeyboardInterrupt:
         if args.clear:
