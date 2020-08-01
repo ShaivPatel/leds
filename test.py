@@ -18,6 +18,22 @@ LED_BRIGHTNESS = 255   # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
+
+class StripSegment(Adafruit_NeoPixel):
+
+    def __init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL, start, end):
+        super().__init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL)
+        self.start : int = start
+        self.end : int = end
+
+    def setPixelColor(self, i, color):
+        super().setPixelColor(i+self.start, color)
+
+    def numPixels(self):
+        return self.end - self.start
+
+
+
 def theaterChase(strip, color, wait_ms=50, iterations=10):
     """Movie theater light style chaser animation."""
     for j in range(iterations):
@@ -115,9 +131,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Create NeoPixel object with appropriate configuration.
-    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+    strip1 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 0, 138)
+    strip2 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 139, 300)
     # Intialize the library (must be called once before other functions).
-    strip.begin()
+    strip1.begin()
+    strip2.begin()
 
     print ('Press Ctrl-C to quit.')
     if not args.clear:
@@ -127,8 +145,10 @@ if __name__ == '__main__':
     try:
 
         while True:
-            snake(strip, wait_ms=5)
+            snake(strip1, wait_ms=5)
+            snake(strip2, wait_ms=5)
 
     except KeyboardInterrupt:
         if args.clear:
-            colorWipe(strip, Color(0, 0, 0), 3)
+            colorWipe(strip1, Color(0, 0, 0), 3)
+            colorWipe(strip2, Color(0, 0, 0), 3)
