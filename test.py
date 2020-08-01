@@ -131,6 +131,20 @@ def snake(strip= None, strips = (), length = 10, wait_ms=50):
             strip.show()
         time.sleep(wait_ms/1000.0)
 
+    for i in range(strips[0].numPixels() - length):
+        for strip in strips:
+            clear(strip)
+        for j in range(length):
+            pixel = strips[0].numPixels() - (i+j)
+            color = wheel(pixel%256)
+            for strip in strips:
+                strip.setPixelColor(pixel, color)
+
+
+        for strip in strips:
+            strip.show()
+        time.sleep(wait_ms/1000.0)
+
 # Main program logic follows:
 if __name__ == '__main__':
     # Process arguments
@@ -152,7 +166,7 @@ if __name__ == '__main__':
 
     strips = []
     try:
-        n = 4
+        n = 2
         for i in range(n):
             strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*(300/n), i*(300/n)+(300/n - 1))
             strip.begin()
