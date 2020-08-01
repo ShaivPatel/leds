@@ -111,7 +111,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            rainbowCycle(strip,100)
+            rainbowCycle(strip,1)
 
     except KeyboardInterrupt:
         if args.clear:
