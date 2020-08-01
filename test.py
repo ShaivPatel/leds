@@ -22,7 +22,7 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 class StripSegment(Adafruit_NeoPixel):
 
     def __init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL, start, end):
-        super(StripSegment, self).__init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL)
+        super(StripSegment, self).__init__(_LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL)
         self.start = start
         self.end = end
 
