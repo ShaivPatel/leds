@@ -112,17 +112,22 @@ def clear(strip):
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, Color(0,0,0))
 
-def snake(strip, length = 10, wait_ms=50):
+def snake(strip= None, strips = (), length = 10, wait_ms=50):
+
+    if strip is not None:
+        strips = (strip)
 
     for i in range(strip.numPixels() - length):
         clear(strip)
         for j in range(length):
             pixel = i+j
             color = wheel(pixel%256)
-            strip.setPixelColor(pixel, color)
+            for strip in strips:
+                strip.setPixelColor(pixel, color)
 
 
-        strip.show()
+        for strip in strips:
+            strip.show()
         time.sleep(wait_ms/1000.0)
 
 # Main program logic follows:
@@ -147,20 +152,9 @@ if __name__ == '__main__':
     try:
 
         while True:
-            snake(strip1, wait_ms=5)
-            snake(strip2, wait_ms=5)
+            snake((strip1,strip2), wait_ms=5)
 
-            # creating threads
-            t1 = threading.Thread(target=snake, name='t1', args = (strip1,), kwargs={'wait_ms':5})
-            t2 = threading.Thread(target=snake, name='t2', args = (strip2,), kwargs={'wait_ms':5})
 
-            # starting threads
-            t1.start()
-            t2.start()
-
-            # wait until all threads finish
-            t1.join()
-            t2.join()
 
     except KeyboardInterrupt:
             if args.clear:
