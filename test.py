@@ -6,6 +6,7 @@
 import time
 from neopixel import *
 import argparse
+from random import randint
 
 # LED strip configuration:
 LED_COUNT      = 300    # Number of LED pixels.
@@ -50,8 +51,20 @@ def rainbow(strip, wait_ms=20, iterations=1):
 def rainbowCycle(strip, wait_ms=20, iterations=5):
     """Draw rainbow that uniformly distributes itself across all pixels."""
     for j in range(256*iterations):
+
+        whitepixels = []
+        while len(whitepixels) < strip.numPixels()*0.10:
+            pixel = randint(0,strip.numPixels())
+            if pixel not in whitepixels:
+                whitepixels.append(pixel)
+
+
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
+            if i in whitepixels:
+                strip.setPixelColor(i,Color(255,255,255))
+
+
         strip.show()
         time.sleep(wait_ms/1000.0)
 
@@ -93,9 +106,6 @@ if __name__ == '__main__':
     print ('Press Ctrl-C to quit.')
     if not args.clear:
         print('Use "-c" argument to clear LEDs on exit')
-
-
-
 
 
     try:
