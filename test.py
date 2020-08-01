@@ -124,7 +124,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            snake()
+            snake(strip)
 
     except KeyboardInterrupt:
         if args.clear:
