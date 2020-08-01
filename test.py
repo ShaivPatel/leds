@@ -7,6 +7,8 @@ import time
 from neopixel import *
 import argparse
 from random import randint
+import threading
+
 
 # LED strip configuration:
 LED_COUNT      = 300    # Number of LED pixels.
@@ -148,7 +150,19 @@ if __name__ == '__main__':
             snake(strip1, wait_ms=5)
             snake(strip2, wait_ms=5)
 
+            # creating threads
+            t1 = threading.Thread(target=snake, name='t1', args = (strip1,), kwargs={'wait_ms':5})
+            t2 = threading.Thread(target=snake, name='t2', args = (strip2,), kwargs={'wait_ms':5})
+
+            # starting threads
+            t1.start()
+            t2.start()
+
+            # wait until all threads finish
+            t1.join()
+            t2.join()
+
     except KeyboardInterrupt:
-        if args.clear:
-            colorWipe(strip1, Color(0, 0, 0), 3)
-            colorWipe(strip2, Color(0, 0, 0), 3)
+            if args.clear:
+                colorWipe(strip1, Color(0, 0, 0), 3)
+                colorWipe(strip2, Color(0, 0, 0), 3)
