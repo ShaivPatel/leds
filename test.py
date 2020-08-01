@@ -101,7 +101,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            theaterChaseRainbow(strip)
+            rainbowCycle(strip)
 
     except KeyboardInterrupt:
         if args.clear:
