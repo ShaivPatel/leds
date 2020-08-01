@@ -23,8 +23,8 @@ class StripSegment(Adafruit_NeoPixel):
 
     def __init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL, start, end):
         super().__init__(self, _LED_COUNT, _LED_PIN, _LED_FREQ_HZ, _LED_DMA, _LED_INVERT, _LED_BRIGHTNESS, _LED_CHANNEL)
-        self.start : int = start
-        self.end : int = end
+        self.start = start
+        self.end = end
 
     def setPixelColor(self, i, color):
         super().setPixelColor(i+self.start, color)
