@@ -93,7 +93,7 @@ def colorWipe(strip, color, wait_ms=50):
 
 def snake(strip, length = 10, wait_ms=50):
 
-    for i in range(strip.numPixels - length):
+    for i in range(strip.numPixels() - length):
         strip.clear()
         for j in range(length):
             pixel = i+j
