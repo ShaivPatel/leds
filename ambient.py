@@ -170,6 +170,11 @@ if __name__ == '__main__':
         for i in range(300):
             strip1.setPixelColor(i,Color(255,255,255))
 
+        strip1.show()
+
+        while True:
+            pass
+
 
 
     except KeyboardInterrupt:
