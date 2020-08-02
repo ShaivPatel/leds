@@ -153,10 +153,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # # Create NeoPixel object with appropriate configuration.
-    # strip1 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 0, 139)
+    strip1 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 0, 299)
     # strip2 = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, 140, 299)
     # # Intialize the library (must be called once before other functions).
-    # strip1.begin()
+    strip1.begin()
     # strip2.begin()
 
     print ('Press Ctrl-C to quit.')
@@ -166,14 +166,9 @@ if __name__ == '__main__':
 
     strips = []
     try:
-        n = 2
-        for i in range(n):
-            strip = StripSegment(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, i*(300/n), i*(300/n)+(300/n - 1))
-            strip.begin()
-            strips.append(strip)
 
-        while True:
-            snake(strips = strips, wait_ms=5)
+        for i in range(300):
+            strip1.setPixelColor(i,Color(255,255,255))
 
 
 
