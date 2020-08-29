@@ -106,7 +106,8 @@ def _update_pi():
             continue
             
         strip._led_data[i] = int(rgb[i])
-        strip._led_data[i+172] = int(rgb[i])
+        strip._led_data[i+130] = int(rgb[i])
+        strip._led_data[i+200] = int(rgb[i])
     _prev_pixels = np.copy(p)
     strip.show()
 
