@@ -60,6 +60,8 @@ if __name__ == '__main__':
                 else:
                     strip.setPixelColor(i,Color(0,0,0))
 
+                strip.show()
+
 
 
 
