@@ -51,14 +51,14 @@ if __name__ == '__main__':
     if not args.clear:
         print('Use "-c" argument to clear LEDs on exit')
 
-
-    while True:
-        length = input('leds to light?')
-        for i in range(300):
-            if i <= length:
-                strip.setPixelColor(i,Color(int(255*((i/300)%1)),int(255*((i+100/300)%1)),int(255*((i+200/300)%1))))
-            else:
-                strip.setPixelColor(i,Color(0,0,0))
+    try:
+        while True:
+            length = input('leds to light?')
+            for i in range(300):
+                if i <= length:
+                    strip.setPixelColor(i,Color(int(255*((i/300)%1)),int(255*((i+100/300)%1)),int(255*((i+200/300)%1))))
+                else:
+                    strip.setPixelColor(i,Color(0,0,0))
 
 
 
