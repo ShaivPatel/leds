@@ -106,6 +106,7 @@ def _update_pi():
             continue
             
         strip._led_data[int(i*35/72)] = int(rgb[i])
+        strip._led_data[int(i*63/72)+36] = int(rgb[i])
         strip._led_data[int(i*41/72)+99] = int(rgb[i])
         strip._led_data[int(i*27/72)+141] = int(rgb[i])
         strip._led_data[int(i*51/72)+169] = int(rgb[i])
