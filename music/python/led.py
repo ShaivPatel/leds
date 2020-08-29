@@ -105,12 +105,12 @@ def _update_pi():
         if np.array_equal(p[:, i], _prev_pixels[:, i]):
             continue
             
-        strip._led_data[i] = int(rgb[i])
-        strip._led_data[i+50] = int(rgb[i])
-        strip._led_data[i+100] = int(rgb[i])
-        strip._led_data[i+150] = int(rgb[i])
-        strip._led_data[i+200] = int(rgb[i])
-        strip._led_data[i+250] = int(rgb[i])
+        strip._led_data[int(i*35/72)] = int(rgb[i])
+        strip._led_data[int(i*41/72)+99] = int(rgb[i])
+        strip._led_data[int(i*27/72)+141] = int(rgb[i])
+        strip._led_data[int(i*51/72)+169] = int(rgb[i])
+        strip._led_data[int(i*45/72)+241] = int(rgb[i])
+        strip._led_data[int(i*14/72)+286] = int(rgb[i])
     _prev_pixels = np.copy(p)
     strip.show()
 
