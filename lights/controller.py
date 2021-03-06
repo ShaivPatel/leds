@@ -80,6 +80,7 @@ class Controller:
 
     def switchTo(self, selection: int):
 
+        print(7)
         if selection == 1:
             # strandtest
             while True:
