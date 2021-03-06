@@ -4,7 +4,7 @@ set -e
 
 # summary of how this script can be called:
 #        * <postinst> `configure' <most-recently-configured-version>
-#        * <old-postinst> `abort-upgrade' <new version>
+#        * <OLD-postinst> `abort-upgrade' <new version>
 #        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
 #          <new-version>
 #        * <postinst> `abort-remove'
@@ -24,8 +24,7 @@ fi
 
 case "$1" in
 
-  remove)
-    ldconfig
+  remove|upgrade|deconfigure)
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
@@ -33,7 +32,7 @@ case "$1" in
   ;;
 
   *)
-    echo "postrm called with unknown argument \`$1'" >&2
+    echo "postinst called with unknown argument \`$1'" >&2
     exit 1
   ;;
 
@@ -42,4 +41,4 @@ esac
 db_stop
 
 exit 0
-~               
+

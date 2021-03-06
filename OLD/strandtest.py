@@ -95,24 +95,10 @@ if __name__ == '__main__':
         print('Use "-c" argument to clear LEDs on exit')
 
     try:
-	while True:
-	    rainbow(strip)
-            rainbowCycle(strip)
-	    theaterChaseRainbow(strip)
-        while False:
-            print ('Color wipe animations.')
-            colorWipe(strip, Color(255, 0, 0),10)  # Red wipe
-            colorWipe(strip, Color(0, 255, 0),10)  # Blue wipe
-            colorWipe(strip, Color(0, 0, 255),10)  # Green wipe
-            print ('Theater chase animations.')
-            theaterChase(strip, Color(127, 127, 127))  # White theater chase
-            theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-            theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
-            print ('Rainbow animations.')
+        while True:
             rainbow(strip)
             rainbowCycle(strip)
             theaterChaseRainbow(strip)
-
     except KeyboardInterrupt:
         if args.clear:
             colorWipe(strip, Color(0,0,0), 10)
