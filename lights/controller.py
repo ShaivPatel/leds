@@ -88,7 +88,7 @@ class Controller:
                 theaterChaseRainbow(self.strip)
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
     LED_PIN = 18
     LED_BRIGHTNESS = 255
     print('1')
