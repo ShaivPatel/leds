@@ -118,8 +118,9 @@ class Adafruit_NeoPixel(object):
 	def setPixelColor(self, n, color):
 		"""Set LED at position n to the provided 24-bit color value (in RGB order).
 		"""
-		print(10)
+		print(color)
 		self._led_data[n] = color
+		print(11)
 
 	def setPixelColorRGB(self, n, red, green, blue, white = 0):
 		"""Set LED at position n to the provided red, green, and blue color.
