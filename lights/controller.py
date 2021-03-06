@@ -8,7 +8,7 @@ LED_COUNT      = 300   # Number of LED pixels.
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
-LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+LED_CHANNEL    = 1       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 
 # Define functions which animate LEDs in various ways.
@@ -92,7 +92,7 @@ class Controller:
 
 
 if __name__ == '__main__':
-    LED_PIN = 18
+    LED_PIN = 19
     LED_BRIGHTNESS = 255
     print('1')
     controller = Controller(LED_PIN, LED_BRIGHTNESS)
