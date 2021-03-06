@@ -75,6 +75,7 @@ class Controller:
 
         self.LED_PIN = led_pin
         self.LED_BRIGHTNESS = led_pin
+        print(2)
         self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
 
     def switchTo(self, selection: int):
@@ -87,8 +88,9 @@ class Controller:
                 theaterChaseRainbow(self.strip)
 
 
-LED_PIN = 18
-LED_BRIGHTNESS = 255
-
-controller = Controller(LED_PIN, LED_BRIGHTNESS)
-controller.switchTo(1)
+if __name__ == 'main':
+    LED_PIN = 18
+    LED_BRIGHTNESS = 255
+    print('1')
+    controller = Controller(LED_PIN, LED_BRIGHTNESS)
+    controller.switchTo(1)
