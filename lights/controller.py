@@ -44,7 +44,6 @@ def wheel(pos):
 def rainbow(strip, wait_ms=20, iterations=1):
     """Draw rainbow that fades across all pixels at once."""
 
-    print(8)
     for j in range(256 * iterations):
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((i + j) & 255))
@@ -77,13 +76,11 @@ class Controller:
 
         self.LED_PIN = led_pin
         self.LED_BRIGHTNESS = led_pin
-        print(2)
         self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
         self.strip.begin()
 
     def switchTo(self, selection: int):
 
-        print(7)
         if selection == 1:
             # strandtest
             while True:
