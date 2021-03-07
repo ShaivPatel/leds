@@ -99,10 +99,7 @@ if __name__ == '__main__':
     LED_BRIGHTNESS = 255
     controller = Controller(LED_PIN, LED_BRIGHTNESS)
     while True:
-        selection = input('''
-            Select pattern:
-            1) strandtest
-        ''')
+        selection = input('''Select pattern:\n1) strandtest\n''')
         try:
             controller.switchTo(selection)
         except KeyboardInterrupt:
