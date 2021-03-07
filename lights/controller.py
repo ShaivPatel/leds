@@ -81,7 +81,7 @@ class Controller:
 
     def switchTo(self, selection: int):
 
-        if selection == 1:
+        if selection == '1':
             # strandtest
             while True:
                 rainbow(self.strip)
