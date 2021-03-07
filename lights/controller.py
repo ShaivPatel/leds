@@ -98,6 +98,7 @@ if __name__ == '__main__':
     LED_PIN = 18
     LED_BRIGHTNESS = 255
     controller = Controller(LED_PIN, LED_BRIGHTNESS)
+    colorWipe(controller.strip, Color(0,0,0), 10)
     while True:
         selection = input('''Select pattern:\n1) strandtest\n''')
         try:
