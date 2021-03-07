@@ -75,7 +75,7 @@ class Controller:
     def __init__(self, led_pin, led_brightness):
 
         self.LED_PIN = led_pin
-        self.LED_BRIGHTNESS = led_pin
+        self.LED_BRIGHTNESS = led_brightness
         self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
         self.strip.begin()
 
