@@ -96,4 +96,8 @@ if __name__ == '__main__':
     LED_BRIGHTNESS = 255
     print('1')
     controller = Controller(LED_PIN, LED_BRIGHTNESS)
-    controller.switchTo(1)
+    try:
+        while True:
+            controller.switchTo(1)
+    except KeyboardInterrupt:
+        colorWipe(strip, Color(0,0,0), 10)

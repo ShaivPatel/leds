@@ -60,7 +60,6 @@ class Adafruit_NeoPixel(object):
 		specifying if the signal line should be inverted (default False), and
 		channel, the PWM channel to use (defaults to 0).
 		"""
-		print(3)
 		# Create ws2811_t structure and fill in parameters.
 		self._leds = ws.new_ws2811_t()
 
@@ -79,17 +78,13 @@ class Adafruit_NeoPixel(object):
 		ws.ws2811_channel_t_invert_set(self._channel, 0 if not invert else 1)
 		ws.ws2811_channel_t_brightness_set(self._channel, brightness)
 		ws.ws2811_channel_t_strip_type_set(self._channel, strip_type)
-		print(3)
 		# Initialize the controller
 		ws.ws2811_t_freq_set(self._leds, freq_hz)
 		ws.ws2811_t_dmanum_set(self._leds, dma)
-		print(4)
 		# Grab the led data array.
 		self._led_data = _LED_Data(self._channel, num)
-		print(5)
 		# Substitute for __del__, traps an exit condition and cleans up properly
 		atexit.register(self._cleanup)
-		print(6)
 
 
 	def _cleanup(self):
@@ -118,9 +113,8 @@ class Adafruit_NeoPixel(object):
 	def setPixelColor(self, n, color):
 		"""Set LED at position n to the provided 24-bit color value (in RGB order).
 		"""
-		print(color)
+		
 		self._led_data[n] = color
-		print(11)
 
 	def setPixelColorRGB(self, n, red, green, blue, white = 0):
 		"""Set LED at position n to the provided red, green, and blue color.
