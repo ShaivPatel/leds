@@ -79,6 +79,7 @@ class Controller:
         self.LED_BRIGHTNESS = led_pin
         print(2)
         self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
+        self.strip.begin()
 
     def switchTo(self, selection: int):
 
