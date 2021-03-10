@@ -2,6 +2,7 @@ import time
 from neopixel import *
 import argparse
 from music.visualization import visualize
+from music.microphone import close_stream
 
 
 # LED strip configuration:
@@ -111,8 +112,9 @@ if __name__ == '__main__':
     controller = Controller(LED_PIN, LED_BRIGHTNESS)
     colorWipe(controller.strip, Color(0,0,0), 10)
     while True:
-        selection = input('''Select pattern:\n1) strandtest\n''')
+        selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
         try:
             controller.switchTo(selection)
         except KeyboardInterrupt:
+            close_stream()
             colorWipe(controller.strip, Color(0,0,0), 10)

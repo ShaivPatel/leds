@@ -3,8 +3,10 @@ import numpy as np
 import pyaudio
 import music.config as config
 
-
+p = None
+stream = None
 def start_stream(callback):
+    global p, stream
     p = pyaudio.PyAudio()
     frames_per_buffer = int(config.MIC_RATE / config.FPS)
     stream = p.open(format=pyaudio.paInt16,
@@ -25,6 +27,13 @@ def start_stream(callback):
             if time.time() > prev_ovf_time + 1:
                 prev_ovf_time = time.time()
                 print('Audio buffer has overflowed {} times'.format(overflows))
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
+    close_stream()
+
+
+def close_stream():
+    global stream, p
+    
+    if p and stream:
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
