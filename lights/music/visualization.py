@@ -190,6 +190,11 @@ def visualize(visualization_type):
     fft_window = np.hamming(int(config.MIC_RATE / config.FPS) * config.N_ROLLING_HISTORY)
     prev_fps_update = time.time()
 
+    # Number of audio samples to read every time frame
+    samples_per_frame = int(config.MIC_RATE / config.FPS)
+
+    # Array containing the rolling audio sample window
+    y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
     def microphone_update(audio_samples):
         global y_roll, prev_rms, prev_exp, prev_fps_update
@@ -245,11 +250,6 @@ def visualize(visualization_type):
                 print('FPS {:.0f} / {:.0f}'.format(fps, config.FPS))
 
 
-    # Number of audio samples to read every time frame
-    samples_per_frame = int(config.MIC_RATE / config.FPS)
-
-    # Array containing the rolling audio sample window
-    y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
     if sys.argv[1] == "spectrum":
             visualization_type = visualize_spectrum
