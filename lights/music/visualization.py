@@ -3,10 +3,10 @@ from __future__ import division
 import time
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter1d
-import config
-import microphone
-import dsp
-import led
+import music.config as config
+import music.microphone as microphone
+import music.dsp as dsp
+import music.led as led
 import sys
 
 
