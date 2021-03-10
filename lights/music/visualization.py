@@ -255,6 +255,8 @@ y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
 def visualize(vType):
 
+    global visualization_effect
+
     if vType == "spectrum":
         visualization_type = visualize_spectrum
     elif vType == "energy":
