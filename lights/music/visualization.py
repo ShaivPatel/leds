@@ -9,6 +9,8 @@ import dsp
 import led
 import sys
 
+global y_roll, prev_rms, prev_exp, prev_fps_update
+
 def visualize(visualization_type):
 
     _time_prev = time.time() * 1000.0
@@ -199,7 +201,7 @@ def visualize(visualization_type):
     prev_fps_update = time.time()
 
     def microphone_update(audio_samples):
-        global y_roll, prev_rms, prev_exp, prev_fps_update
+
         # Normalize samples between 0 and 1
         y = audio_samples / 2.0**15
         # Construct a rolling window of audio samples
