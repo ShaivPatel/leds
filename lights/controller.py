@@ -1,6 +1,7 @@
 import time
 from neopixel import *
 import argparse
+from music.visualization import visualize
 
 
 # LED strip configuration:
@@ -87,6 +88,16 @@ class Controller:
                 rainbow(self.strip)
                 rainbowCycle(self.strip)
                 theaterChaseRainbow(self.strip)
+
+        if selection == '2':
+            # scroll
+            visualize('scroll')
+        if selection == '3':
+            # scroll
+            visualize('energy')
+        if selection == '4':
+            # scroll
+            visualize('spectrum')
         else:
             colorWipe(self.strip, Color(255,0,0), 10)
             colorWipe(self.strip, Color(0,255,0), 10)
