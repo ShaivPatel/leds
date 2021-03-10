@@ -252,13 +252,13 @@ y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
 
 
-def visualize(visualization_type):
+def visualize(vType):
 
-    if sys.argv[1] == "spectrum":
+    if vType == "spectrum":
         visualization_type = visualize_spectrum
-    elif sys.argv[1] == "energy":
+    elif vType == "energy":
         visualization_type = visualize_energy
-    elif sys.argv[1] == "scroll":
+    elif vType == "scroll":
         visualization_type = visualize_scroll
     else:
         visualization_type = visualize_spectrum
