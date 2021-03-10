@@ -3,7 +3,7 @@ from __future__ import division
 
 import platform
 import numpy as np
-import config
+import music.config as config
 
 # ESP8266 uses WiFi communication
 if config.DEVICE == 'esp8266':

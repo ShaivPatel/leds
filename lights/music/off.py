@@ -3,7 +3,7 @@
 import time
 from rpi_ws281x import *
 import argparse
-import config
+import music.config as config
 
 # LED strip configuration:
 LED_COUNT = config.N_PIXELS # Number of LED pixels.
