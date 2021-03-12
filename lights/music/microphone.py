@@ -32,7 +32,7 @@ def start_stream(callback):
 
 def close_stream():
     global stream, p
-    
+
     if p and stream:
         stream.stop_stream()
         stream.close()
