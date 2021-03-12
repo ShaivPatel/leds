@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 from controller import Controller
+import threading
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,8 +22,11 @@ if __name__ == '__main__':
 
     LED_PIN = 18
     LED_BRIGHTNESS = 255
-    lightController = Controller(LED_PIN, LED_BRIGHTNESS)
-    lightController.run()
-    colorWipe(lightController.strip, Color(0, 0, 0), 10)
 
-    app.run(debug=True)
+
+    lightController = Controller(LED_PIN, LED_BRIGHTNESS)
+
+    x = threading.Thread(target=app, kwargs={'debug':True})
+    x.start()
+    lightController.run()
+

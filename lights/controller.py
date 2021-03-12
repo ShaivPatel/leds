@@ -84,6 +84,9 @@ class Controller:
         self.status = 'Off'
 
     def run(self):
+
+        colorWipe(self.strip, Color(0, 0, 0), 10)
+
         while True:
             if len(self.requests):
                 request = self.requests.pop(0)
