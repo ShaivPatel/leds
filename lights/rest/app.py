@@ -18,7 +18,6 @@ class HelloWorld(Resource):
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
-    global lightController
 
     LED_PIN = 18
     LED_BRIGHTNESS = 255
