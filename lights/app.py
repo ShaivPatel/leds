@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     lightController = Controller(LED_PIN, LED_BRIGHTNESS)
 
-    x = threading.Thread(target=app, kwargs={'debug':True})
+    x = threading.Thread(target=app.run, kwargs={'debug':True})
     x.start()
     lightController.run()
 
