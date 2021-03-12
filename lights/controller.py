@@ -88,6 +88,7 @@ class Controller:
         colorWipe(self.strip, Color(0, 0, 0), 10)
 
         while True:
+            print('check')
             if len(self.requests):
                 request = self.requests.pop(0)
                 self.switchTo(request)
