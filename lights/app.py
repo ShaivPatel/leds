@@ -25,6 +25,7 @@ if __name__ == '__main__':
 
 
     lightController = Controller(LED_PIN, LED_BRIGHTNESS)
+    lightController.switchTo(0)
 
     x = threading.Thread(target=lightController.run)
     x.start()
