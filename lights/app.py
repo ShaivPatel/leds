@@ -29,6 +29,6 @@ if __name__ == '__main__':
     x = threading.Thread(target=lightController.run)
     x.start()
 
-    app.run(debug=True)
+    app.run(host= '0.0.0.0', debug=True)
 
 
