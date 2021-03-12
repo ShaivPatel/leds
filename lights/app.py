@@ -23,8 +23,12 @@ if __name__ == '__main__':
     LED_PIN = 18
     LED_BRIGHTNESS = 255
 
-    app.run(debug=True)
 
     lightController = Controller(LED_PIN, LED_BRIGHTNESS)
-    lightController.run()
+
+    x = threading.Thread(target=lightController.run)
+    x.start()
+
+    app.run(debug=True)
+
 
