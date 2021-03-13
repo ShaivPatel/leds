@@ -123,16 +123,16 @@ class Controller:
             colorWipe(self.strip, Color(0,0,255), 10)
             colorWipe(self.strip, Color(0,0,0), 10)
 
-#
-# if __name__ == '__main__':
-#     LED_PIN = 18
-#     LED_BRIGHTNESS = 255
-#     controller = Controller(LED_PIN, LED_BRIGHTNESS)
-#     colorWipe(controller.strip, Color(0,0,0), 10)
-#     while True:
-#         selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
-#         try:
-#             controller.switchTo(selection)
-#         except KeyboardInterrupt:
-#             close_stream()
-#             colorWipe(controller.strip, Color(0,0,0), 10)
+
+if __name__ == '__main__':
+    LED_PIN = 18
+    LED_BRIGHTNESS = 255
+    controller = Controller(LED_PIN, LED_BRIGHTNESS)
+    colorWipe(controller.strip, Color(0,0,0), 10)
+    while True:
+        selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
+        try:
+            controller.switchTo(selection)
+        except KeyboardInterrupt:
+            close_stream()
+            colorWipe(controller.strip, Color(0,0,0), 10)
