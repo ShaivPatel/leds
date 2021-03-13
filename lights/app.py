@@ -11,6 +11,7 @@ lightController = None
 class HelloWorld(Resource):
     def get(self):
         selection = request.args.get('selection')
+        print(selection)
         if selection:
             lightController.requests.append(selection)
         return lightController.status
