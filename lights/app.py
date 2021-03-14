@@ -11,9 +11,10 @@ lightController = None
 class HelloWorld(Resource):
     def get(self):
         selection = request.args.get('selection')
-        print(selection)
         if selection:
+            print(selection)
             lightController.requests.append(selection)
+            # print(lightController.requests)
         return lightController.status
 
 
@@ -31,6 +32,6 @@ if __name__ == '__main__':
     x = threading.Thread(target=lightController.run)
     x.start()
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5050)
 
 

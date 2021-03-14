@@ -78,30 +78,35 @@ class Controller:
 
         self.LED_PIN = led_pin
         self.LED_BRIGHTNESS = led_brightness
-        self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
-        self.strip.begin()
+        # self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
+        # self.strip.begin()
         self.requests = []
         self.status = 'Off'
 
     def run(self):
 
-        colorWipe(self.strip, Color(0, 0, 0), 10)
+        # colorWipe(self.strip, Color(0, 0, 0), 10)
 
         print('controller running')
         while True:
-            if len(self.requests):
+            time.sleep(6)
+            print(self.requests)
+            if len(self.requests)>0:
                 request = self.requests.pop(0)
                 self.switchTo(request)
 
     def switchTo(self, selection: int):
 
+        print('selection:%s'%selection)
+
         if selection == '1':
             self.status = 'Strand Test'
-            # strandtest
+            # # strandtest
             while True:
                 rainbow(self.strip)
                 rainbowCycle(self.strip)
                 theaterChaseRainbow(self.strip)
+            print(self.status)
 
 
         if selection == '2':
@@ -110,11 +115,11 @@ class Controller:
             visualize('scroll')
         if selection == '3':
             self.status = 'Music - Energy'
-            # scroll
+            # # scroll
             visualize('energy')
         if selection == '4':
             self.status = 'Music - Spectrum'
-            # scroll
+            # # scroll
             visualize('spectrum')
         else:
             self.status = 'Off'
@@ -123,16 +128,16 @@ class Controller:
             colorWipe(self.strip, Color(0,0,255), 10)
             colorWipe(self.strip, Color(0,0,0), 10)
 
-
-if __name__ == '__main__':
-    LED_PIN = 18
-    LED_BRIGHTNESS = 255
-    controller = Controller(LED_PIN, LED_BRIGHTNESS)
-    colorWipe(controller.strip, Color(0,0,0), 10)
-    while True:
-        selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
-        try:
-            controller.switchTo(selection)
-        except KeyboardInterrupt:
-            close_stream()
-            colorWipe(controller.strip, Color(0,0,0), 10)
+#
+# if __name__ == '__main__':
+#     LED_PIN = 18
+#     LED_BRIGHTNESS = 255
+#     controller = Controller(LED_PIN, LED_BRIGHTNESS)
+#     colorWipe(controller.strip, Color(0,0,0), 10)
+#     while True:
+#         selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
+#         try:
+#             controller.switchTo(selection)
+#         except KeyboardInterrupt:
+#             close_stream()
+#             colorWipe(controller.strip, Color(0,0,0), 10)
