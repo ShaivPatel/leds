@@ -92,7 +92,9 @@ class Controller:
             time.sleep(6)
             print(self.requests)
             if len(self.requests)>0:
+                raise KeyboardInterrupt
                 request = self.requests.pop(0)
+                print('request received:%s'%request)
                 self.switchTo(request)
 
     def switchTo(self, selection: int):
