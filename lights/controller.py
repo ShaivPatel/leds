@@ -3,7 +3,7 @@ from neopixel import *
 import argparse
 from music.visualization import visualize
 from music.microphone import close_stream
-
+import threading
 
 # LED strip configuration:
 LED_COUNT      = 300   # Number of LED pixels.
@@ -95,7 +95,8 @@ class Controller:
                 close_stream()
                 request = self.requests.pop(0)
                 print('request received:%s'%request)
-                self.switchTo(request)
+                x = threading.Thread(target=self.switchTo, args = (request,))
+                x.start()
 
     def switchTo(self, selection: int):
 
