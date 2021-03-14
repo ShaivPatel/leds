@@ -92,7 +92,7 @@ class Controller:
             time.sleep(6)
             print(self.requests)
             if len(self.requests)>0:
-                raise KeyboardInterrupt
+                close_stream()
                 request = self.requests.pop(0)
                 print('request received:%s'%request)
                 self.switchTo(request)
