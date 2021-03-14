@@ -78,14 +78,14 @@ class Controller:
 
         self.LED_PIN = led_pin
         self.LED_BRIGHTNESS = led_brightness
-        # self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
-        # self.strip.begin()
+        self.strip = Adafruit_NeoPixel(LED_COUNT, self.LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.LED_BRIGHTNESS, LED_CHANNEL)
+        self.strip.begin()
         self.requests = []
         self.status = 'Off'
 
     def run(self):
 
-        # colorWipe(self.strip, Color(0, 0, 0), 10)
+        colorWipe(self.strip, Color(0, 0, 0), 10)
 
         print('controller running')
         while True:
@@ -106,7 +106,6 @@ class Controller:
                 rainbow(self.strip)
                 rainbowCycle(self.strip)
                 theaterChaseRainbow(self.strip)
-            print(self.status)
 
 
         if selection == '2':
