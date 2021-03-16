@@ -91,6 +91,7 @@ class Controller:
         while True:
             if len(self.requests)>0:
                 request=self.requests.pop(0)
+                print('new request received: %s' % str(request))
                 self.switchTo(request)
 
             if self.status == 'Strand Test':
@@ -106,28 +107,28 @@ class Controller:
 
     def switchTo(self, selection: int):
 
-        print('selection:%s'%selection)
-
         if selection == '1':
             self.status = 'Strand Test'
+            print('Strand selected.')
 
-        if selection == '2':
-            # scroll
+        elif selection == '2':
             self.status = 'Music - Scroll'
+            print('Scroll selected.')
             close_visualize()
             boot_visualize('scroll', self.strip)
-        if selection == '3':
+        elif selection == '3':
             self.status = 'Music - Energy'
-            # # scroll
+            print('Energy selected.')
             close_visualize()
             boot_visualize('energy',self.strip)
-        if selection == '4':
+        elif selection == '4':
             self.status = 'Music - Spectrum'
-            # # scroll
+            print('Spectrum selected.')
             close_visualize()
             boot_visualize('spectrum', self.strip)
         else:
             self.status = 'Off'
+            print('Turning lights off.')
             colorWipe(self.strip, Color(255,0,0), 10)
             colorWipe(self.strip, Color(0,255,0), 10)
             colorWipe(self.strip, Color(0,0,255), 10)

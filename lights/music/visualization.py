@@ -274,6 +274,7 @@ def boot_visualize(vType, strip):
     led.update()
     # Start listening to live audio stream
     microphone.start_stream()
+    print('stream started')
 
 def update_visualize():
 
@@ -281,4 +282,6 @@ def update_visualize():
 
 def close_visualize():
 
+
     microphone.close_stream()
+    print('stream closed')
