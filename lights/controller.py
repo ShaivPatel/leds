@@ -109,25 +109,31 @@ class Controller:
 
     def switchTo(self, selection: int):
 
+
+
         if selection == '1':
             self.status = 'Strand Test'
             print('Strand selected.')
+            colorWipe(self.strip, Color(0, 0, 0), 1)
 
         elif selection == '2':
             self.status = 'Music - Scroll'
             print('Scroll selected.')
             close_visualize()
             boot_visualize('scroll', self.strip)
+            colorWipe(self.strip, Color(0, 0, 0), 1)
         elif selection == '3':
             self.status = 'Music - Energy'
             print('Energy selected.')
             close_visualize()
             boot_visualize('energy',self.strip)
+            colorWipe(self.strip, Color(0, 0, 0), 1)
         elif selection == '4':
             self.status = 'Music - Spectrum'
             print('Spectrum selected.')
             close_visualize()
             boot_visualize('spectrum', self.strip)
+            colorWipe(self.strip, Color(0, 0, 0), 1)
         else:
             self.status = 'Off'
             print('Turning lights off.')
