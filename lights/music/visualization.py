@@ -252,10 +252,11 @@ samples_per_frame = int(config.MIC_RATE / config.FPS)
 y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 
 
-
-def visualize(vType):
+def boot_visualize(vType, strip):
 
     global visualization_effect
+
+    led.setStrip(strip)
 
     if vType == "spectrum":
         visualization_type = visualize_spectrum
@@ -272,4 +273,12 @@ def visualize(vType):
     # Initialize LEDs
     led.update()
     # Start listening to live audio stream
-    microphone.start_stream(microphone_update)
+    microphone.start_stream()
+
+def update_visualize():
+
+    microphone.update_stream()
+
+def close_visualize():
+
+    microphone.close_stream()

@@ -1,7 +1,7 @@
 import time
 from neopixel import *
 import argparse
-from music.visualization import visualize
+from music.visualization import boot_visualize, close_visualize, update_visualize
 from music.microphone import close_stream
 import threading
 
@@ -89,14 +89,20 @@ class Controller:
 
         print('controller running')
         while True:
-            time.sleep(6)
-            print(self.requests)
             if len(self.requests)>0:
-                close_stream()
-                request = self.requests.pop(0)
-                print('request received:%s'%request)
-                x = threading.Thread(target=self.switchTo, args = (request,))
-                x.start()
+                request=self.requests.pop(0)
+                self.switchTo(request)
+
+            if self.status == 'Strand Test':
+                rainbow(self.strip)
+                rainbowCycle(self.strip)
+                theaterChaseRainbow(self.strip)
+            elif 'Music' in self.status:
+                update_visualize()
+            else:
+                colorWipe(self.strip, Color(0, 0, 0), 1)
+
+
 
     def switchTo(self, selection: int):
 
@@ -104,25 +110,22 @@ class Controller:
 
         if selection == '1':
             self.status = 'Strand Test'
-            # # strandtest
-            while True:
-                rainbow(self.strip)
-                rainbowCycle(self.strip)
-                theaterChaseRainbow(self.strip)
-
 
         if selection == '2':
             # scroll
             self.status = 'Music - Scroll'
-            visualize('scroll')
+            close_visualize()
+            boot_visualize('scroll', self.strip)
         if selection == '3':
             self.status = 'Music - Energy'
             # # scroll
-            visualize('energy')
+            close_visualize()
+            boot_visualize('energy',self.strip)
         if selection == '4':
             self.status = 'Music - Spectrum'
             # # scroll
-            visualize('spectrum')
+            close_visualize()
+            boot_visualize('spectrum', self.strip)
         else:
             self.status = 'Off'
             colorWipe(self.strip, Color(255,0,0), 10)
@@ -130,16 +133,5 @@ class Controller:
             colorWipe(self.strip, Color(0,0,255), 10)
             colorWipe(self.strip, Color(0,0,0), 10)
 
-#
-# if __name__ == '__main__':
-#     LED_PIN = 18
-#     LED_BRIGHTNESS = 255
-#     controller = Controller(LED_PIN, LED_BRIGHTNESS)
-#     colorWipe(controller.strip, Color(0,0,0), 10)
-#     while True:
-#         selection = input('''Select pattern:\n1) strandtest\n2)scroll\n3)energy\n4)spectrum''')
-#         try:
-#             controller.switchTo(selection)
-#         except KeyboardInterrupt:
-#             close_stream()
-#             colorWipe(controller.strip, Color(0,0,0), 10)
+
+
