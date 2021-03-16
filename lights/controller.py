@@ -95,9 +95,11 @@ class Controller:
                 self.switchTo(request)
 
             if self.status == 'Strand Test':
-                rainbow(self.strip)
-                rainbowCycle(self.strip)
-                theaterChaseRainbow(self.strip)
+                rainbow(self.strip,5)
+                if len(self.requests)==0:
+                    rainbowCycle(self.strip,5)
+                if len(self.requests)==0:
+                    theaterChaseRainbow(self.strip,5)
             elif 'Music' in self.status:
                 update_visualize()
             else:

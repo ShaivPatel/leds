@@ -6,12 +6,11 @@ import music.visualization as visualization
 
 p = None
 stream = None
-callback = None
 frames_per_buffer = None
 
 
-def start_stream(requested_callback):
-    global p, stream, callback, frames_per_buffer
+def start_stream():
+    global p, stream, frames_per_buffer
     p = pyaudio.PyAudio()
     frames_per_buffer = int(config.MIC_RATE / config.FPS)
     stream = p.open(format=pyaudio.paInt16,
@@ -19,7 +18,7 @@ def start_stream(requested_callback):
                     rate=config.MIC_RATE,
                     input=True,
                     frames_per_buffer=frames_per_buffer)
-    callback=requested_callback
+
 
 
 def close_stream():
