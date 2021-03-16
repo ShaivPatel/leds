@@ -103,7 +103,7 @@ class Controller:
                         theaterChaseRainbow(self.strip,25)
 
                 elif self.status == 'Ambient':
-                    colorWipe(self.strip, Color(150, 150, 150), 1)
+                    colorWipe(self.strip, Color(100, 100, 100), 1)
                 elif 'Music' in self.status:
                     update_visualize()
                 else:
