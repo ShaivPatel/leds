@@ -100,6 +100,9 @@ class Controller:
                     rainbowCycle(self.strip,25)
                 if len(self.requests)==0:
                     theaterChaseRainbow(self.strip,25)
+
+            elif self.status == 'Ambient':
+                colorWipe(self.strip, Color(150, 150, 150), 1)
             elif 'Music' in self.status:
                 update_visualize()
             else:
@@ -109,31 +112,28 @@ class Controller:
 
     def switchTo(self, selection: int):
 
+        # close mic stream
+        close_visualize()
 
-
+        #change status and initialize any resources
         if selection == '1':
             self.status = 'Strand Test'
             print('Strand selected.')
-            colorWipe(self.strip, Color(0, 0, 0), 1)
-
         elif selection == '2':
             self.status = 'Music - Scroll'
             print('Scroll selected.')
-            close_visualize()
             boot_visualize('scroll', self.strip)
-            colorWipe(self.strip, Color(0, 0, 0), 1)
         elif selection == '3':
             self.status = 'Music - Energy'
             print('Energy selected.')
-            close_visualize()
             boot_visualize('energy',self.strip)
-            colorWipe(self.strip, Color(0, 0, 0), 1)
         elif selection == '4':
             self.status = 'Music - Spectrum'
             print('Spectrum selected.')
-            close_visualize()
             boot_visualize('spectrum', self.strip)
-            colorWipe(self.strip, Color(0, 0, 0), 1)
+        elif selection == '5':
+            self.status = 'Ambient'
+            print('Ambient selected.')
         else:
             self.status = 'Off'
             print('Turning lights off.')
@@ -141,6 +141,9 @@ class Controller:
             colorWipe(self.strip, Color(0,255,0), 10)
             colorWipe(self.strip, Color(0,0,255), 10)
             colorWipe(self.strip, Color(0,0,0), 10)
+
+        # clear leds
+        colorWipe(self.strip, Color(0, 0, 0), 1)
 
 
 
