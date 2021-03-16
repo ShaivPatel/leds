@@ -31,7 +31,8 @@ if __name__ == '__main__':
 
     x = threading.Thread(target=lightController.run)
     x.start()
-
-    app.run(host='0.0.0.0', port=5050)
-
+    try:
+        app.run(host='0.0.0.0', port=5050)
+    except:
+        pass
 

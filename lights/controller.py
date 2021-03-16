@@ -89,25 +89,28 @@ class Controller:
 
         print('controller running')
         while True:
-            if len(self.requests)>0:
-                request=self.requests.pop(0)
-                print('new request received: %s' % str(request))
-                self.switchTo(request)
+            try:
+                if len(self.requests)>0:
+                    request=self.requests.pop(0)
+                    print('new request received: %s' % str(request))
+                    self.switchTo(request)
 
-            if self.status == 'Strand Test':
-                rainbow(self.strip,25)
-                if len(self.requests)==0:
-                    rainbowCycle(self.strip,25)
-                if len(self.requests)==0:
-                    theaterChaseRainbow(self.strip,25)
+                if self.status == 'Strand Test':
+                    rainbow(self.strip,25)
+                    if len(self.requests)==0:
+                        rainbowCycle(self.strip,25)
+                    if len(self.requests)==0:
+                        theaterChaseRainbow(self.strip,25)
 
-            elif self.status == 'Ambient':
-                colorWipe(self.strip, Color(150, 150, 150), 1)
-            elif 'Music' in self.status:
-                update_visualize()
-            else:
-                colorWipe(self.strip, Color(0, 0, 0), 1)
-
+                elif self.status == 'Ambient':
+                    colorWipe(self.strip, Color(150, 150, 150), 1)
+                elif 'Music' in self.status:
+                    update_visualize()
+                else:
+                    colorWipe(self.strip, Color(0, 0, 0), 1)
+            except:
+                close_visualize()
+                return
 
 
     def switchTo(self, selection: int):
