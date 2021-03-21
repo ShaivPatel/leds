@@ -7,5 +7,5 @@ lcd = Adafruit_CharLCD(rs=26, en=19,
 lcd.clear()
 while True:
     lcd.message('Brightness\n   100%   ')
-# sleep(3)
+    sleep(3)
 
