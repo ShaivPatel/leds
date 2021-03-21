@@ -1,6 +1,6 @@
 import time
 from RPLCD import CharLCD
-lcd = CharLCD(cols=16, rows=2, pin_rs=37, pin_e=35, pins_data=[33, 31, 29, 23])
+lcd = CharLCD(cols=16, rows=2, pin_rs=26, pin_e=19, pins_data=[13, 6, 5, 11])
 
 while True:
     lcd.write_string(u"Hello world!")
