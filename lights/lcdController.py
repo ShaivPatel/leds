@@ -1,9 +1,11 @@
-import time
-from RPLCD import CharLCD
-lcd = CharLCD(cols=16, rows=2, pin_rs=26, pin_e=19, pins_data=[13, 6, 5, 11])
+from time import sleep
+from Adafruit_CharLCD import Adafruit_CharLCD
 
-while True:
-    lcd.write_string(u"Hello world!")
-    time.sleep(1)
-    lcd.clear()
-    time.sleep(1)
+lcd = Adafruit_CharLCD(rs=26, en=19,
+                       d4=13, d5=6, d6=5, d7=11,
+                       cols = 16, lines = 2)
+lcd.clear()
+
+lcd.message('Brightness\n   100%   ')
+sleep(3)
+
