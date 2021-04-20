@@ -82,6 +82,7 @@ class Controller:
         self.strip.begin()
         self.requests = []
         self.status = 'Off'
+        self.color = None
 
     def run(self):
 
@@ -104,6 +105,8 @@ class Controller:
 
                 elif self.status == 'Ambient':
                     colorWipe(self.strip, Color(100, 100, 100), 1)
+                elif self.status == 'Color':
+                    colorWipe(self.strip, self.color, 1)
                 elif 'Music' in self.status:
                     update_visualize()
                 else:
@@ -137,6 +140,14 @@ class Controller:
         elif selection == '5':
             self.status = 'Ambient'
             print('Ambient selected.')
+        elif ',' in selection:
+            try:
+                colors  = selection.split(',')
+                self.status = 'Color'
+                if len(colors) == 3:
+                    self.color = Color(int(colors[0]),int(colors[1]),int(colors[2])
+            except:
+                pass
         else:
             self.status = 'Off'
             print('Turning lights off.')
