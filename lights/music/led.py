@@ -58,13 +58,13 @@ def _update_pi(segment = None):
             if np.array_equal(p[:, i], _prev_pixels[:, i]):
                 continue
 
-            strip._led_data[i] = int(rgb[int(i/300*130)+85])
+            strip._led_data[i+85] = int(rgb[int(i/300*130)+85])
         for i in range(85):
             # Ignore pixels if they haven't changed (saves bandwidth)
             if np.array_equal(p[:, i], _prev_pixels[:, i]):
                 continue
 
-            strip._led_data[i] = int(rgb[int(i/300*85)+215])
+            strip._led_data[i+215] = int(rgb[int(i/300*85)+215])
 
     _prev_pixels = np.copy(p)
     strip.show()
