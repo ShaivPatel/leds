@@ -116,7 +116,7 @@ class Controller:
                 return
 
 
-    def switchTo(self, selection: int):
+    def switchTo(self, selection: str):
 
         # close mic stream
         close_visualize()
