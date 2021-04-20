@@ -151,10 +151,10 @@ class Controller:
         else:
             self.status = 'Off'
             print('Turning lights off.')
-            colorWipe(self.strip, Color(255,0,0), 10)
-            colorWipe(self.strip, Color(0,255,0), 10)
-            colorWipe(self.strip, Color(0,0,255), 10)
-            colorWipe(self.strip, Color(0,0,0), 10)
+            colorWipe(self.strip, Color(255,0,0), 2)
+            colorWipe(self.strip, Color(0,255,0), 2)
+            colorWipe(self.strip, Color(0,0,255), 2)
+            colorWipe(self.strip, Color(0,0,0), 2)
 
         # clear leds
         colorWipe(self.strip, Color(0, 0, 0), 1)
