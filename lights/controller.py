@@ -145,7 +145,7 @@ class Controller:
                 colors  = selection.split(',')
                 self.status = 'Color'
                 if len(colors) == 3:
-                    self.color = Color(int(colors[0]),int(colors[1]),int(colors[2])
+                    self.color = Color(int(colors[0]),int(colors[1]),int(colors[2]))
             except:
                 pass
         else:
