@@ -22,7 +22,7 @@ def setStrip(newStrip):
     global strip
     strip = newStrip
 
-def _update_pi():
+def _update_pi(segment = None):
     """Writes new LED values to the Raspberry Pi's LED strip
 
     Raspberry Pi uses the rpi_ws281x to control the LED strip directly.
@@ -39,19 +39,40 @@ def _update_pi():
     b = p[2][:].astype(int)
     rgb = np.bitwise_or(np.bitwise_or(r, g), b)
     # Update the pixels
-    for i in range(config.N_PIXELS):
-        # Ignore pixels if they haven't changed (saves bandwidth)
-        if np.array_equal(p[:, i], _prev_pixels[:, i]):
-            continue
-            
-        strip._led_data[i] = int(rgb[i])
+    if segment is None:
+        for i in range(config.N_PIXELS):
+            # Ignore pixels if they haven't changed (saves bandwidth)
+            if np.array_equal(p[:, i], _prev_pixels[:, i]):
+                continue
+
+            strip._led_data[i] = int(rgb[i])
+    else:
+        for i in range(85):
+            # Ignore pixels if they haven't changed (saves bandwidth)
+            if np.array_equal(p[:, i], _prev_pixels[:, i]):
+                continue
+
+            strip._led_data[i] = int(rgb[int(i/300*85)])
+        for i in range(130):
+            # Ignore pixels if they haven't changed (saves bandwidth)
+            if np.array_equal(p[:, i], _prev_pixels[:, i]):
+                continue
+
+            strip._led_data[i] = int(rgb[int(i/300*130)+85])
+        for i in range(85):
+            # Ignore pixels if they haven't changed (saves bandwidth)
+            if np.array_equal(p[:, i], _prev_pixels[:, i]):
+                continue
+
+            strip._led_data[i] = int(rgb[int(i/300*85)+215])
+
     _prev_pixels = np.copy(p)
     strip.show()
 
 
-def update():
+def update(segment = None):
     """Updates the LED strip values"""
-    _update_pi()
+    _update_pi(segment)
 
 # Execute this file to run a LED strand test
 # If everything is working, you should see a red, green, and blue pixel scroll

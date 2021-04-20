@@ -17,6 +17,7 @@ _fps = dsp.ExpFilter(val=config.FPS, alpha_decay=0.2, alpha_rise=0.2)
 """The low-pass filter used to estimate frames-per-second"""
 
 visualization_effect = None
+selectedType  = None
 
 def frames_per_second():
     """Return the estimated frames per second
@@ -226,7 +227,10 @@ def microphone_update(audio_samples):
         # Map filterbank output onto LED strip
         output = visualization_effect(mel)
         led.pixels = output
-        led.update()
+        segment = None
+        if selectedType and selectedType == 'energy':
+            segment = 3
+        led.update(segment)
         if config.USE_GUI:
             # Plot filterbank output
             x = np.linspace(config.MIN_FREQUENCY, config.MAX_FREQUENCY, len(mel))
@@ -255,6 +259,9 @@ y_roll = np.random.rand(config.N_ROLLING_HISTORY, samples_per_frame) / 1e16
 def boot_visualize(vType, strip):
 
     global visualization_effect
+    global selectedType
+
+    selectedType = vType
 
     led.setStrip(strip)
 
