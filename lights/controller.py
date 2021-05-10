@@ -97,11 +97,7 @@ class Controller:
                     self.switchTo(request)
 
                 if self.status == 'Strand Test':
-                    rainbow(self.strip,25)
-                    if len(self.requests)==0:
-                        rainbowCycle(self.strip,25)
-                    if len(self.requests)==0:
-                        theaterChaseRainbow(self.strip,25)
+                    rainbowCycle(self.strip,25)
 
                 elif self.status == 'Ambient':
                     colorWipe(self.strip, Color(25,25,25), 1)
