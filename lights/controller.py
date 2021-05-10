@@ -104,7 +104,7 @@ class Controller:
                         theaterChaseRainbow(self.strip,25)
 
                 elif self.status == 'Ambient':
-                    colorWipe(self.strip, Color(0,0,0,100), 1)
+                    colorWipe(self.strip, Color(25,25,25), 1)
                 elif self.status == 'Color':
                     colorWipe(self.strip, self.color, 1)
                 elif 'Music' in self.status:
